@@ -21,7 +21,7 @@ public class Streams {
         var result = employees.stream()
                 .collect(Collectors.filtering(e -> e.getId() % 2 == 0,
                         Collectors.groupingBy(e -> e.getEmail().substring(e.getEmail()
-                                .indexOf('@') + 1), Collectors.counting())));
+                                .indexOf('@') + 1), Collectors.mapping(Employee::getEmail, Collectors.toList()))));
 
         result.forEach((k, v) -> System.out.printf("%s = %s\n", k, v));
     }
