@@ -6,23 +6,22 @@ package net.ins.edu.algorithms.leetcode;
 public class ReverseLinkedList {
 
     public ListNode reverseList(ListNode head) {
-        if (head == null) return null;
-        if (head.next == null) return head;
+        if (head == null || head.next == null) return head;
 
         ListNode prev = null;
-        ListNode curr = head;
+        ListNode cur = head;
         ListNode next = head.next;
 
-        while (curr != null) {
-            next = curr.next;
-
-            curr.next = prev; //
-            prev = curr; //
-//            next = curr;
-            curr = next;
+        while (next != null) {
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+            next = next.next;
         }
-        head = prev;
-        return head;
+
+        cur.next = prev;
+
+        return cur;
     }
 
     public static class ListNode {
@@ -51,7 +50,7 @@ public class ReverseLinkedList {
     }
 
     public static void main(String[] args) {
-        var ll = new ListNode(10, new ListNode(20, new ListNode(30)));
+        var ll = new ListNode(10, new ListNode(20, new ListNode(30, new ListNode(40))));
         var debug = new ReverseLinkedList().reverseList(ll);
         System.out.println(debug);
     }
