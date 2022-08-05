@@ -44,13 +44,18 @@ public class TreeNode<T extends Comparable<T>> {
 //    }
 
     public <N extends TreeNode<T>> TreeNode<T> insert(N node, T val) {
-        if (node == null) return new TreeNode<>(val);
+        if (node == null) return createNode(val);
         if (val.compareTo(node.val) < 0) {
             node.left = insert(node.left, val);
         } else if (val.compareTo(node.val) > 0) {
             node.right = insert(node.right, val);
         }
         return node;
+    }
+
+    @SuppressWarnings("unchecked")
+    protected <N extends TreeNode<T>> N createNode(T val) {
+        return (N) new TreeNode<>(val);
     }
 
     public void visualizeSubtreeTopToBottom() {

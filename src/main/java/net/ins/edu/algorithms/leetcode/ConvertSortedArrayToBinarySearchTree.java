@@ -38,31 +38,20 @@ public class ConvertSortedArrayToBinarySearchTree {
     public static void main(String[] args) {
 
         var avl = new AVLNode<>(10);
-        avl.insert(avl, 5);
-        avl.insert(avl, 3);
-        avl.insert(avl, 2);
-        avl.insert(avl, 6);
-        avl.insert(avl, 7);
-        avl.insert(avl, 20);
-        avl.insert(avl, 15);
-        avl.insert(avl, 17);
+        avl = avl.insert(avl, 5);
+        avl = avl.insert(avl, 3);
+        avl = avl.insert(avl, 2);
+        avl = avl.insert(avl, 6);
+        avl = avl.insert(avl, 7);
+        avl = avl.insert(avl, 20);
+        avl = avl.insert(avl, 15);
+        avl = avl.insert(avl, 17);
+        avl = avl.insert(avl, 30);
+        avl = avl.insert(avl, 4);
+        avl = avl.insert(avl, 18);
+        avl = avl.insert(avl, 19);
+        avl = avl.insert(avl, 8);
 
         avl.visualizeSubtreeLeftToRight();
-
-        var root = new AVLNode<>(10,
-                new AVLNode<>(5, new AVLNode<>(3, null, new TreeNode<>(2)), new AVLNode<>(6, new AVLNode<>(7), null)),
-                new AVLNode<>(20, new AVLNode<>(15
-                        , new AVLNode<>(17), null
-                ), null)
-        );
-        root.visualizeSubtreeLeftToRight();
-
-
-        var simpleTree = new TreeNode<>(50);
-        simpleTree.insert(simpleTree, 45);
-        simpleTree.insert(simpleTree, 30);
-        simpleTree.insert(simpleTree, 35);
-
-        simpleTree.visualizeSubtreeLeftToRight();
     }
 }
