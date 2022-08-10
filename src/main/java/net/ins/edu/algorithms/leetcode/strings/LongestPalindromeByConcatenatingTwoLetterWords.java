@@ -1,6 +1,7 @@
 package net.ins.edu.algorithms.leetcode.strings;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -11,17 +12,21 @@ public class LongestPalindromeByConcatenatingTwoLetterWords {
     public int longestPalindrome(String[] words) {
         var buffer = new ArrayList<String>();
         var result = 0;
+        var symmetricEntriesCount = 0;
         for (String word : words) {
             String reversed = "" + word.charAt(1) + word.charAt(0);
+            boolean isSymmetric = word.charAt(0) == word.charAt(1);
             if (buffer.contains(reversed)) {
                 buffer.remove(reversed);
                 result += 4;
+                if (isSymmetric) --symmetricEntriesCount;
             } else {
                 buffer.add(word);
+                if (isSymmetric) ++symmetricEntriesCount;
             }
         }
-        boolean hasSymmetricEntry = buffer.stream().anyMatch(it -> it.charAt(0) == it.charAt(1));
-        return result + (hasSymmetricEntry ? 2 : 0);
+
+        return result + (symmetricEntriesCount > 0 ? 2 : 0);
     }
 
     public static void main(String[] args) {
