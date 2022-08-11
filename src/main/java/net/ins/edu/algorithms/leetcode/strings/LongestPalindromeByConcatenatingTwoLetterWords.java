@@ -10,18 +10,23 @@ import java.util.HashSet;
 public class LongestPalindromeByConcatenatingTwoLetterWords {
 
     public int longestPalindrome(String[] words) {
-        var buffer = new ArrayList<String>();
+        var buffer = new HashMap<String, Integer>();
         var result = 0;
         var symmetricEntriesCount = 0;
         for (String word : words) {
             String reversed = "" + word.charAt(1) + word.charAt(0);
             boolean isSymmetric = word.charAt(0) == word.charAt(1);
-            if (buffer.contains(reversed)) {
-                buffer.remove(reversed);
+            var entry = buffer.get(reversed);
+            if (entry != null) {
+                var newCount = entry - 2;
+                buffer.put(reversed, newCount);
+                if (newCount == 0) {
+                    buffer.remove(reversed);
+                }
                 result += 4;
                 if (isSymmetric) --symmetricEntriesCount;
             } else {
-                buffer.add(word);
+                buffer.put(word, buffer.getOrDefault(word, 0) + 2);
                 if (isSymmetric) ++symmetricEntriesCount;
             }
         }
