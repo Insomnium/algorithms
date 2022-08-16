@@ -1,4 +1,4 @@
-package net.ins.edu.algorithms.leetcode;
+package net.ins.edu.algorithms.leetcode.linkedlist;
 
 /**
  * <a href="https://leetcode.com/problems/reverse-linked-list/submissions/">Reverse Linked List</a>

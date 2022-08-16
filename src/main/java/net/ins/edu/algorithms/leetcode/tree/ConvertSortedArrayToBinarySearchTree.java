@@ -1,4 +1,4 @@
-package net.ins.edu.algorithms.leetcode;
+package net.ins.edu.algorithms.leetcode.tree;
 
 import net.ins.edu.algorithms.leetcode.util.AVLNode;
 import net.ins.edu.algorithms.leetcode.util.TreeNode;

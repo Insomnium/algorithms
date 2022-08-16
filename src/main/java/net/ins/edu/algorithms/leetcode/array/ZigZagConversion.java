@@ -1,4 +1,4 @@
-package net.ins.edu.algorithms.leetcode;
+package net.ins.edu.algorithms.leetcode.array;
 
 /**
  * <a href="https://leetcode.com/problems/zigzag-conversion/">Zigzag Conversion</a>
