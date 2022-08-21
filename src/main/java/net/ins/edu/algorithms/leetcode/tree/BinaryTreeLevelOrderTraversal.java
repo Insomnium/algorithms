@@ -1,4 +1,4 @@
-package net.ins.edu.algorithms.leetcode;
+package net.ins.edu.algorithms.leetcode.tree;
 
 import java.util.ArrayList;
 import java.util.HashMap;
