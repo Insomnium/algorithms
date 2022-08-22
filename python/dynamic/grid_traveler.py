@@ -6,13 +6,7 @@ def gridTraveler(m: int, n: int, result: int = 0) -> int:
     if m == 1 and n == 1:
         return 1
 
-    if (m > 0):
-        result += gridTraveler(m-1, n)
-
-    if (n > 0):
-        result += gridTraveler(m, n-1)
-
-    return result
+    return gridTraveler(m-1, n) + gridTraveler(m, n-1)
 
 if __name__ == '__main__':
     print(gridTraveler(1, 1)) # 1
