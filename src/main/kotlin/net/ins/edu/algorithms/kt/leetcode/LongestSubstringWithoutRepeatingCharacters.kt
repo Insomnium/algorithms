@@ -1,4 +1,4 @@
-package net.ins.edu.algorithms.search.leetcode
+package net.ins.edu.algorithms.kt.leetcode
 
 class Solution {
 

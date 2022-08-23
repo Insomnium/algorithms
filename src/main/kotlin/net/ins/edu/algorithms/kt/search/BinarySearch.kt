@@ -1,4 +1,4 @@
-package net.ins.edu.algorithms.search
+package net.ins.edu.algorithms.kt.search
 
 fun main() {
     println(binarySearch(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 11, 567, 1000), 8))
