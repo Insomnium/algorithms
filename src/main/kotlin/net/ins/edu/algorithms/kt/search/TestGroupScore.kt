@@ -1,6 +1,6 @@
 @file:Suppress("UNREACHABLE_CODE")
 
-package net.ins.edu.algorithms.search
+package net.ins.edu.algorithms.kt.search
 
 fun solution(tests: Array<String>, results: Array<String>): Int {
     val regex = "^([A-Za-z]*)(\\d*)".toRegex()
