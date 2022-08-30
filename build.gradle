@@ -1,7 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.5.10'
     id 'java'
-    id "io.freefair.lombok" version "6.4.2"
+    id "io.freefair.lombok" version "6.5.0.3"
 }
 
 group 'org.example'
@@ -20,4 +20,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+java {
+    javaToolchains {
+        version = JavaLanguageVersion.of(18)
+    }
 }
