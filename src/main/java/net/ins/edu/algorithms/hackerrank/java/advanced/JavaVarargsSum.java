@@ -1,6 +1,5 @@
 package net.ins.edu.algorithms.hackerrank.java.advanced;
 
-import net.ins.edu.algorithms.Tmp;
 
 import java.util.ArrayList;
 import java.util.List;
