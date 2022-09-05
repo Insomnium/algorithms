@@ -1,5 +1,7 @@
 package net.ins.edu.algorithms.leetcode.util.integer;
 
+import java.util.function.Supplier;
+
 public class ListNode {
     public int val;
     public ListNode next;
@@ -23,4 +25,6 @@ public class ListNode {
                 ", next=" + next +
                 '}';
     }
+
+    public static Supplier<ListNode> sampleSupplier = () -> new ListNode(10, new ListNode(20, new ListNode(30, new ListNode(40, new ListNode(50)))));
 }
