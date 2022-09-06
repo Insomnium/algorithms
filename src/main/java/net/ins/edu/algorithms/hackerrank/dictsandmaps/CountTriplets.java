@@ -1,9 +1,6 @@
 package net.ins.edu.algorithms.hackerrank.dictsandmaps;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
@@ -17,36 +14,21 @@ public class CountTriplets {
      * @return geometric progression triplets count
      */
     public static long countTriplets(List<Long> arr, long r) {
-        if (arr.size() < 3) return 0;
+        Map<Long, Integer> singles = new HashMap<>();
+        Map<Long, Integer> doubles = new HashMap<>();
+        int tripletsCount = 0;
 
-        Collections.sort(arr);
-        Map<Long, Long> entriesCount = arr.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        if (entriesCount.size() == 1) {
-            return binomialSimple(arr.size(), 3);
-        }
-
-        long tripletCount = 0, lowLevelTriplets = 0L;
-        long a = 0L, b = 0L, c = 0L;
-        int i, j, k;
-        for (i = 0; i < arr.size()-2; i++) {
-            for (j = i+1; j < arr.size() - 1;) {
-                for (k = j+1; k < arr.size();) {
-                    a = arr.get(i); b = arr.get(j); c = arr.get(k);
-                    if (isTripletOfRatio(a, b, c, r)) {
-                        lowLevelTriplets = entriesCount.get(c);
-                        k += entriesCount.get(c);
-                        break;
-                    } else {
-                        k++;
-                    }
-                }
-                j++;
-                tripletCount += lowLevelTriplets;
-                lowLevelTriplets = 0;
+        for (Long num : arr) {
+            if (doubles.containsKey(num / r)) {
+                tripletsCount += doubles.get(num / r);
             }
 
+            doubles.put(num, doubles.getOrDefault(num, 0) + singles.getOrDefault(num / r, 0));
+
+            singles.put(num, singles.getOrDefault(num, 0) + 1);
         }
-        return tripletCount;
+
+        return tripletsCount;
     }
 
     private static long binomialSimple(final int elementsTotal, final int elementsInBucket) {
@@ -57,19 +39,18 @@ public class CountTriplets {
         return ret;
     }
 
-    private static boolean isTripletOfRatio(long a, long b, long c, long r) {
-        return a*r == b && b*r == c;
-    }
 
     public static void main(String[] args) {
         System.out.println(countTriplets(new ArrayList<>(List.of(1L, 3L, 9L, 9L, 27L, 81L)), 3)); // 6
         System.out.println(countTriplets(new ArrayList<>(List.of(1L, 5L, 5L, 25L, 125L)), 5)); // 4
         System.out.println(countTriplets(new ArrayList<>(List.of(1L, 2L, 2L, 4L)), 2)); // 2
-
+        System.out.println(countTriplets(new ArrayList<>(List.of(1L, 1L, 3L, 9L, 27L, 81L)), 3)); // 4
+        System.out.println(countTriplets(new ArrayList<>(List.of(1L, 1L, 3L, 3L, 9L, 27L)), 3)); // 6
+//
         List<Long> hundredOnes = LongStream.generate(() -> 1L)
                 .limit(100)
                 .boxed()
                 .toList();
-        System.out.println(countTriplets(new ArrayList<>(hundredOnes), 1));
+        System.out.println(countTriplets(new ArrayList<>(hundredOnes), 1)); // 161700
     }
 }
