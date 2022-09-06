@@ -20,8 +20,21 @@ public class SingleNumber {
                 .orElseThrow(() -> new IllegalArgumentException("No unique element found"));
     }
 
+    public int xorSolution(int[] nums) {
+        int ans = 0;
+
+        for (int num : nums) {
+            ans ^= num;
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args) {
         System.out.println(new SingleNumber().singleNumber(new int[] { 2,2,1 }));
         System.out.println(new SingleNumber().singleNumber(new int[] { 4,1,2,1,2 }));
+
+        System.out.println(new SingleNumber().xorSolution(new int[] { 2,2,1 }));
+        System.out.println(new SingleNumber().xorSolution(new int[] { 4,1,2,1,2 }));
     }
 }
