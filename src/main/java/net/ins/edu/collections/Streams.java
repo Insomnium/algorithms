@@ -5,7 +5,10 @@ import net.ins.edu.domain.Employee;
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import static java.util.Collections.shuffle;
 
 public class Streams {
 
@@ -30,7 +33,7 @@ public class Streams {
         Map<String, String> convertedMap = mapToConvertValues.entrySet()
                 .stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().toString()));
-        System.out.println(convertedMap);
+        System.out.println("The map with converted values:" + convertedMap);
 
         // flattening
         List<List<String>> partitions = List.of(
@@ -43,6 +46,17 @@ public class Streams {
                 .flatMap(Collection::stream)
                 .sorted()
                 .toList();
-        System.out.println(ordered);
+        System.out.println("Flattened and sorted collection" + ordered);
+
+
+        // generating int array
+        List<Integer> integers = IntStream.range(0, 100)
+                .boxed()
+                .collect(Collectors.toCollection(ArrayList::new));
+        shuffle(integers);
+        int[] randomArray = integers.stream()
+                .mapToInt(i -> i)
+                .toArray();
+        System.out.println("Randomly generated array: " + Arrays.toString(randomArray));
     }
 }
