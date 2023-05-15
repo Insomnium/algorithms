@@ -1,4 +1,4 @@
-package net.ins.edu.algorithms.leetcode.linkedlist.practice;
+package net.ins.edu.algorithms.practice;
 
 import net.ins.edu.algorithms.leetcode.util.integer.ListNode;
 

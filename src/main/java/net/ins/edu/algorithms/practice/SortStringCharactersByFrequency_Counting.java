@@ -1,6 +1,5 @@
-package net.ins.edu.algorithms.leetcode.linkedlist.practice;
+package net.ins.edu.algorithms.practice;
 
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;

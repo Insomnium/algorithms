@@ -1,13 +1,10 @@
-package net.ins.edu.algorithms.leetcode.linkedlist.practice;
+package net.ins.edu.algorithms.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static java.util.Collections.shuffle;
 
