@@ -27,7 +27,7 @@ public class RemoveNthNodeFromEndOfList {
                     prevNode.next = null;
                 }
             } else {
-                node.val = node.next.val;
+                node.value = node.next.value;
                 node.next = node.next.next;
             }
         }
