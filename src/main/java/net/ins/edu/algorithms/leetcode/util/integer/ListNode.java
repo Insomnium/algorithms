@@ -3,25 +3,25 @@ package net.ins.edu.algorithms.leetcode.util.integer;
 import java.util.function.Supplier;
 
 public class ListNode {
-    public int val;
+    public int value;
     public ListNode next;
 
     public ListNode() {
     }
 
-    public ListNode(int val) {
-        this.val = val;
+    public ListNode(int value) {
+        this.value = value;
     }
 
-    public ListNode(int val, ListNode next) {
-        this.val = val;
+    public ListNode(int value, ListNode next) {
+        this.value = value;
         this.next = next;
     }
 
     @Override
     public String toString() {
         return "ListNode{" +
-                "val=" + val +
+                "val=" + value +
                 ", next=" + next +
                 '}';
     }

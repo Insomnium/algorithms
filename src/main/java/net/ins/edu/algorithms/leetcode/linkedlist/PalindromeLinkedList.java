@@ -17,7 +17,7 @@ public class PalindromeLinkedList {
         var rightCurr = reversed;
         int i = 0;
         while (i <= mid) {
-            if (leftCurr.val != rightCurr.val) {
+            if (leftCurr.value != rightCurr.value) {
                 return false;
             }
             leftCurr = leftCurr.next;
@@ -30,11 +30,11 @@ public class PalindromeLinkedList {
     private ListNode copy(ListNode head) {
         if (head == null || head.next == null) return head;
 
-        ListNode newHead = new ListNode(head.val, head.next);
+        ListNode newHead = new ListNode(head.value, head.next);
         ListNode currOrigin = head, curr = newHead;
 
         while (currOrigin.next != null) {
-            curr.next = new ListNode(currOrigin.next.val);
+            curr.next = new ListNode(currOrigin.next.value);
             curr = curr.next;
             currOrigin = currOrigin.next;
         }

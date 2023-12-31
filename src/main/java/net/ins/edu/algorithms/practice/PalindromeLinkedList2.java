@@ -33,7 +33,7 @@ public class PalindromeLinkedList2 {
 
         var curr = head;
         while (curr != null) {
-            sb.append(curr.val);
+            sb.append(curr.value);
             sb.append(";");
             curr = curr.next;
         }
