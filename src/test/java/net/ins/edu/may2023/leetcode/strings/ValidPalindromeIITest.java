@@ -2,7 +2,7 @@ package net.ins.edu.may2023.leetcode.strings;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import net.ins.edu.algorithms.leetcode.may2023.strings.ValidPalindromeII;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

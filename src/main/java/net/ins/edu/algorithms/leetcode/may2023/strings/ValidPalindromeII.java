@@ -1,4 +1,4 @@
-package net.ins.edu.may2023.leetcode.strings;
+package net.ins.edu.algorithms.leetcode.may2023.strings;
 
 /**
  * <a href="https://leetcode.com/problems/valid-palindrome/">125. Valid Palindrome</a>
@@ -9,7 +9,7 @@ public class ValidPalindromeII {
         System.out.println(new Solution().isPalindrome("aba")); // true
     }
 
-    static class Solution {
+    public static class Solution {
 
         public boolean isPalindrome(String s) {
             if (s == null) return false;
