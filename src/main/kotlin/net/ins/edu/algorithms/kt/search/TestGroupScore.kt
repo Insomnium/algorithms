@@ -15,7 +15,7 @@ fun solution(tests: Array<String>, results: Array<String>): Int {
         find?.groupValues?.get(0)?.let {
             testGroups += it + find.groupValues.get(1)
             val groupTests = testsByGroups[it] ?: mutableSetOf()
-            groupTests += test to (results[idx].toLowerCase() == "ok")
+            groupTests += test to (results[idx].lowercase() == "ok")
             testsByGroups[it] = groupTests
         }
     }

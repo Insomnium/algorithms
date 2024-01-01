@@ -17,7 +17,7 @@ class ValidPalindromeIITest {
             "'';true",
             "abca;false",
             "A man, a plan, a canal: Panama;true",
-            "null;flase"
+            "null;false"
     }, delimiter = ';', nullValues = { "null" })
     void test(
             String input,
