@@ -1,0 +1,17 @@
+services:
+  postgres:
+    container_name: postgres-algo
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_algo:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: md5
+
+volumes:
+  pg_algo:
+    driver: local
