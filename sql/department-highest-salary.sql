@@ -7,3 +7,5 @@ from (select max(e.salary) salary, e.departmentid
          inner join department d on max.departmentid = d.id
          inner join employee e on e.salary = max.salary and e.departmentid = d.id
 order by e.salary desc;
+
+
