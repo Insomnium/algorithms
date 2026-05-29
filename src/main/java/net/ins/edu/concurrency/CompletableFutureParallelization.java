@@ -1,11 +1,8 @@
 package net.ins.edu.concurrency;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
+
 import net.ins.edu.domain.service.Service;
 import net.ins.edu.domain.service.ServiceA;
 import net.ins.edu.domain.service.ServiceB;
@@ -20,9 +17,48 @@ public class CompletableFutureParallelization {
 
 //        parallelOnExecutor(serviceA, serviceB);
 //        parallelOnCallableFuture(serviceA, serviceB);
-        chainOnCallableFuture(serviceA, serviceB);
+//        chainOnCallableFuture(serviceA, serviceB);
 
-        System.out.printf("Complete in %s ms", (System.currentTimeMillis() - start));
+//        System.out.printf("Complete in %s ms", (System.currentTimeMillis() - start));
+
+        var executorService = Executors.newFixedThreadPool(10);
+
+        var divider = 1;
+        var cf = new CompletableFuture<String>();
+        var result = CompletableFuture.supplyAsync(() -> serviceA.process(1000))
+                .thenApply(it -> it - 10)
+                .thenApplyAsync(it -> it / divider)
+//                .exceptionally((th) -> {
+//                    log(STR."Failed due to: \{th.getMessage()}");
+//                    return -100L;
+//                })
+                .handleAsync((res, e) -> {
+                    if (e != null) {
+                        log("Failed: " + e.getMessage());
+                        throw new CompletionException("Fucked up", e);
+//                        return "999999";
+                    } else {
+                        log("Proceeding with value: " + res);
+                        return res.toString();
+                    }
+                }, executorService)
+                .thenApply(it -> STR."\{it}000")
+                .thenApplyAsync(s -> {
+                    log(STR."Parsing long value: \{s}");
+                    return Long.parseLong(s);
+                });
+
+        result.whenComplete((res, th) -> {
+            if (th != null) {
+                log("Oops: " + th.getMessage());
+            } else {
+                log("Succeeded: " + res);
+            }
+        });
+
+        result.join();
+
+        executorService.shutdown();
     }
 
     private static void parallelOnExecutor(
@@ -62,5 +98,10 @@ public class CompletableFutureParallelization {
                 .thenApply(seconds -> 999 + serviceB.processServiceC(seconds))
                 .get();
         System.out.println("Value must be 2999: " + l);
+    }
+
+    private static void log(String message) {
+        var threadName = STR."\{Thread.currentThread().getName()} - \{Thread.currentThread().threadId()}";
+        System.out.println(STR."\{threadName} >>> \{message}");
     }
 }
